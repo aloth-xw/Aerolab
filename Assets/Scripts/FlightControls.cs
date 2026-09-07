@@ -266,7 +266,7 @@ public class FlightControls : MonoBehaviour
     private void FixedUpdate()
     {
         physicsBody.AddTorque(-physicsBody.GetRight()*pitchTorque);
-        physicsBody.AddTorque(-physicsBody.GetForward() * rollTorque);
-        physicsBody.AddTorque(-physicsBody.GetUp()*yawTorque);
+        physicsBody.AddTorque(physicsBody.GetForward() * rollTorque);
+        physicsBody.AddTorque(physicsBody.GetUp()*yawTorque);
     }
 }
