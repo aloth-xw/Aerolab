@@ -17,6 +17,8 @@ public class FlightAssistant : MonoBehaviour
 
     [SerializeField] private float messageCooldown = 2f;
     [SerializeField] private float warningConfirmTime = 1f;
+
+
     private float idleTimer = 0f;
 
     private string currentWarning = "";
@@ -51,7 +53,14 @@ public class FlightAssistant : MonoBehaviour
         float verticalSpeed = physicsBody.GetVelocity().y;
         float throttle = aircraft.GetThrottle();
 
-        if (altitude < terrainWarningAltitude && verticalSpeed<dangerousDescentRate)
+       float altitudeAGL = Mathf.Infinity;
+
+        if (Physics.Raycast(transform.position,Vector3.down,out RaycastHit hit,10000f))
+            {
+                altitudeAGL = hit.distance;
+            }
+
+        if (altitudeAGL < terrainWarningAltitude && verticalSpeed<dangerousDescentRate)
         {
             return "¡ALTURA BAJA! ¡SUBE EL MORRO!";
         }
