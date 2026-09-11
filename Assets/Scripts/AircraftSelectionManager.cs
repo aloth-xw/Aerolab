@@ -5,6 +5,7 @@ public class AircraftSelectionMaganer : MonoBehaviour
 {
     [SerializeField]
     private string flightSceneName = "FlightTest";
+    private string tutorialSceneName = "Tutorial";
 
     [SerializeField] private Transform aircraftContainer;
     [SerializeField] private float offsetDistance = 15f;
@@ -69,4 +70,8 @@ public class AircraftSelectionMaganer : MonoBehaviour
         Application.Quit();
     }
 
+    public void startTutorial()
+    {
+        SceneManager.LoadScene(tutorialSceneName);
+    }
 }
